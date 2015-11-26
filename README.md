@@ -11,3 +11,42 @@
 * 按照提示选择需要的项，使用空格选择和取消选择
 
 ###grunt的使用
+```
+'use strict';
+
+module.exports = function (grunt) {
+  // Time how long tasks take. Can help when optimizing build times
+  require('time-grunt')(grunt);
+
+  // Automatically load required grunt tasks
+  require('jit-grunt')(grunt, {
+    useminPrepare: 'grunt-usemin'
+  });
+
+  // Configurable paths
+  var config = {
+    app: 'app',
+    dist: 'dist'
+  };
+}
+```
+*
+* grunt.initConfig({})配置task
+```
+ grunt.initConfig({
+     // Empties folders to start fresh
+    clean: {
+      dist: {
+        files: [{
+          dot: true,
+          src: [
+            '.tmp',
+            '<%= config.dist %>/*',
+            '!<%= config.dist %>/.git*'
+          ]
+        }]
+      },
+      server: '.tmp'
+    },
+ })
+```
